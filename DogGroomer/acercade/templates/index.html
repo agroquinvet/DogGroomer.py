@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Peluquería Canina</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="bodyacercade">
+    <header class="acercade-header">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="acercade-logo">
+        <nav class="acercade-nav">
+            <ul>
+                <li><a href="account/login/">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="hero">
+        <h1>Bienvenido a nuestro Software de Control de Peluquería Canina</h1>
+        <p>Gestiona la información de tus clientes y sus mascotas, y organiza los turnos de peluquería con facilidad.</p>
+    </div>
+    <main class="acercade-main">
+        <section class="acercade-description">
+            <h2>Sobre el Software</h2>
+            <p>Este software te permite gestionar la información de los clientes y sus mascotas, así como los turnos de peluquería.</p>
+        </section>
+        <section class="acercade-contact">
+            <h2>Información de Contacto</h2>
+            <p>Para contratar nuestro servicio, por favor contáctanos:</p>
+            <p>Email: info@doggroomer.com</p>
+            <p>Teléfono: +541127851419</p>
+        </section>
+        <section class="acercade-testimonials">
+            <h2>Testimonios</h2>
+            <div class="testimonial">
+                <p>"Este software ha transformado completamente nuestra forma de trabajar. Ahora es mucho más fácil gestionar los turnos y la información de los clientes."</p>
+                <h3>- Juan Pérez, Peluquería Canina Felices Mascotas</h3>
+            </div>
+            <div class="testimonial">
+                <p>"La mejor herramienta que hemos encontrado para organizar nuestro negocio. Altamente recomendada."</p>
+                <h3>- María González, Estética Canina Glamour</h3>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

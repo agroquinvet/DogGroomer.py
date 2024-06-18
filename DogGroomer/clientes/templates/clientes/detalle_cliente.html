@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle Cliente{% endblock %}
+
+{% block content %}
+<h1 class="detalle-cliente-title">Detalle del Cliente</h1>
+<div class="detalle-cliente-info">
+    <p>Nombre: {{ cliente.nombre }}</p>
+    <p>Apellido: {{ cliente.apellido }}</p>
+    <p>DNI: {{ cliente.dni }}</p>
+    <p>Correo: {{ cliente.correo }}</p>
+    <p>Teléfono: {{ cliente.telefono }}</p>
+    <a class="detalle-cliente-link" href="{% url 'modificar_cliente' pk=cliente.id %}">Modificar Cliente</a><br>
+    <a class="detalle-cliente-link" href="{% url 'eliminar_cliente' pk=cliente.id %}">Eliminar Cliente</a><br>
+</div>
+<h2 class="detalle-cliente-subtitle">Mascotas:</h2>
+<ul class="detalle-cliente-mascotas">
+    {% for mascota in cliente.mascotas.all %}
+        <li>
+            {{ mascota.nombre }} - {{ mascota.raza }}
+            <a class="detalle-cliente-link" href="{% url 'eliminar_mascota' pk=mascota.id %}">Eliminar</a>
+            <a class="detalle-cliente-link" href="{% url 'modificar_mascota' pk=mascota.id %}">Modificar</a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Cliente{% endblock %}
+
+{% block content %}
+<body>
+    
+   
+    <form method="post" >
+        <h1>Agregar Mascota para {{ cliente.nombre }} {{ cliente.apellido }}</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Mascota</button>
+    </form>
+    <a href="{% url 'detalle_cliente' pk=cliente.id %}">Terminar</a>
+    
+    <br>
+</body>
+{% endblock %}

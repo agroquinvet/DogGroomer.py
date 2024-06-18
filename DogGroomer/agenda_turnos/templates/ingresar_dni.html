@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Agendar Turno{% endblock %}
+
+{% block content %}
+    
+    <form method="post">
+        <h1>Ingresar DNI del Cliente para agendar un turno</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Buscar Cliente</button>
+        <a href="{% url 'agregar_cliente' %}" class="button">Registrar Cliente</a><br>
+    </form>
+    
+{% endblock %}

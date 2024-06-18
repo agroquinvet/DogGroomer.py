@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block content %}
+<body class="turnos-semana-body">
+    
+    <form method="post">
+        <h2>Perfil</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Profile</button>
+        <a href="{% url 'home' %}" class="button">Cancelar</a>
+    </form>
+</body>
+{% endblock %}

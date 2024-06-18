@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Cliente{% endblock %}
+
+{% block content %}
+<body>
+    
+    <form method="POST" action="{% url 'agregar_cliente' %}">
+        <h1>Agregar Cliente</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+{% endblock %}

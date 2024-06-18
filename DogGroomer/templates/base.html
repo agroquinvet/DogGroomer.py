@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Título por Defecto{% endblock %}</title>
+    
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    {% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'img/logo.png' %}" alt="Logo">
+            </a>
+        </div>
+  
+        <ul class="navbar">
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'ingresar_dni' %}">Agendar Turno</a></li>
+            <li><a href="{% url 'buscar_cliente' %}">Cliente</a></li>
+            <li><a href="{% url 'profile' %}">Perfil</a></li>
+            <li><form method="post" action="{% url 'logout' %}" class="logout-form">
+                {% csrf_token %}
+                <button type="submit" class="logout-button">Cerrar Sesion</button>
+            </form></li>
+           
+        </ul>
+    </nav>
+    <div class="content">
+       
+        {% block content %}{% endblock %}
+    </div>
+  
+</body>
+</html>

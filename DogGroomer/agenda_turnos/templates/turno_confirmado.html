@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Turno Confirmado{% endblock %}
+
+{% block content %}
+    <h1>Turno Confirmado</h1>
+    <p>Cliente: {{ turno.cliente.nombre }}</p>
+    <p>Mascota: {{ turno.mascota.nombre }}</p>
+    <p>Servicio: {{ turno.servicio.nombre }}</p>
+    <p>Fecha: {{ turno.fecha }}</p>
+    <p>Hora: {{ turno.hora }}</p>
+    <a href="{% url 'home' %}">Ir al inicio</a>
+{% endblock %}

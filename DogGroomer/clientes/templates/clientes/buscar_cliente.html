@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Buscar cliente{% endblock %}
+
+{% block content %}
+    <body>
+        
+        <form method="POST">
+            <h1>Buscar Cliente</h1>
+            {% csrf_token %}
+            <label for="dni">Buscar cliente por DNI:</label>
+            <input type="text" name="dni" id="dni" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </body>
+{% endblock %}

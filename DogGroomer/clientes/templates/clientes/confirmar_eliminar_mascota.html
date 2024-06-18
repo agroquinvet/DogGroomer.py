@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmar Eliminar Mascota{% endblock %}
+
+{% block content %}
+    
+
+
+<form method="post">
+    <h1>¿Estás seguro que deseas eliminar la mascota "{{ mascota.nombre }}"?</h1>
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="{% url 'detalle_cliente' pk=mascota.cliente.id %}">Cancelar</a>
+</form>
+{% endblock %}

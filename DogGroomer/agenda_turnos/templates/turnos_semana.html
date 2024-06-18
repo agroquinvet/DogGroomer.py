@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Turnos de la Semana{% endblock %}
+
+{% block content %}
+<h1 class="turnos-semana-title">Turnos de la Semana</h1>
+<nav class="turnos-semana-nav">
+    <a class="turnos-semana-link" href="{% url 'turnos_semana' semana=semana_anterior %}">Semana Anterior</a>
+    |
+    <a class="turnos-semana-link" href="{% url 'turnos_semana' semana=semana_siguiente %}">Semana Siguiente</a>
+</nav>
+{% for dia, turnos_dia in dias %}
+    <h2 class="turnos-semana-dia">{{ dia|date:"l, d M Y" }}</h2>
+    {% if turnos_dia %}
+        <ul class="turnos-semana-list">
+            {% for turno in turnos_dia %}
+                <li class="turnos-semana-item">
+                    {{ turno.hora|time:"H:i" }} - {{ turno.mascota.nombre }} - {{ turno.cliente.nombre }} - {{ turno.cliente.telefono }}
+                    <a class="detalle-cliente-link" href="{% url 'eliminar_turno' pk=turno.pk %}">Eliminar</a>
+                    <a class="detalle-cliente-link" href="{% url 'modificar_turno' pk=turno.pk %}">Modificar</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="turnos-semana-no-turnos">No hay turnos agendados para este día.</p>
+    {% endif %}
+{% endfor %}    
+<a class="turnos-semana-button" href="{% url 'ingresar_dni' %}">Asignar un turno</a><br>
+{% endblock %}
+
