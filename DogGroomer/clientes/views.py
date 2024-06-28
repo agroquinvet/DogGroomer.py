@@ -60,7 +60,7 @@ class AgregarMascotaView(FormView):
         mascota = form.save(commit=False)
         mascota.cliente = cliente
         mascota.save()
-        return redirect('detalle_cliente', cliente_id=cliente.id)
+        return redirect('detalle_cliente', pk=cliente.id)
 
 class ModificarMascotaView(UpdateView):
     model = Mascota

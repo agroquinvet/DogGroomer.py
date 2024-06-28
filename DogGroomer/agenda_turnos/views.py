@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.utils import timezone
+from django.urls import reverse_lazy
 from datetime import timedelta
 from django.views.generic import FormView, DetailView, TemplateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin  
-from .models import Cliente, Turno
+from .models import Cliente, Turno, Mascota
 from .forms import DniForm, TurnoForm
 
 class IngresarDniView(LoginRequiredMixin, FormView):  
@@ -20,7 +21,7 @@ class IngresarDniView(LoginRequiredMixin, FormView):
             form.add_error('dni', 'Cliente no encontrado')
             return self.form_invalid(form)
 
-class AgendarTurnoView(LoginRequiredMixin, FormView):  
+class AgendarTurnoView(LoginRequiredMixin, FormView):
     template_name = 'agendar_turno.html'
     form_class = TurnoForm
 
@@ -28,15 +29,21 @@ class AgendarTurnoView(LoginRequiredMixin, FormView):
         self.cliente = get_object_or_404(Cliente, id=kwargs['cliente_id'])
         return super().dispatch(request, *args, **kwargs)
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['cliente'] = self.cliente  # Pasar el cliente como argumento al form
+        return kwargs
+
     def form_valid(self, form):
         turno = form.save(commit=False)
         turno.cliente = self.cliente
         turno.save()
-        return redirect('turno_confirmado', turno_id=turno.id)
+        return redirect('turno_confirmado', pk=turno.id)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cliente'] = self.cliente
+        context['mascotas'] = Mascota.objects.filter(cliente=self.cliente)  # Filtrar mascotas por cliente
         return context
 
 class TurnoConfirmadoView(LoginRequiredMixin, DetailView):  
@@ -68,12 +75,13 @@ class TurnosSemanaView(LoginRequiredMixin, TemplateView):
         context['semana_siguiente'] = semana + 1
         return context
 
-class EliminarTurnoView(LoginRequiredMixin, DeleteView): 
+class EliminarTurnoView(LoginRequiredMixin, DeleteView):
     model = Turno
     template_name = 'eliminar_turno.html'
-    context_object_name = 'turno'
-    success_url = '/home'
+    success_url = reverse_lazy('home')
+ 
 
+    
 class ModificarTurnoView(LoginRequiredMixin, UpdateView):  
     model = Turno
     form_class = TurnoForm
