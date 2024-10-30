@@ -1,0 +1,8 @@
+site_name: Doggroomer Documentation
+nav:
+  - Home: index.md
+  - Instalación: instalacion.md
+  - Uso: uso.md
+  - Estructura: estructura.md
+ 
+

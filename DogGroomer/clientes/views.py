@@ -13,7 +13,7 @@ class BuscarClienteView(View):
         dni = request.POST.get('dni')
         cliente = Cliente.objects.filter(dni=dni).first()
         if cliente:
-            return redirect('detalle_cliente', cliente_id=cliente.id)
+            return redirect('detalle_cliente', pk=cliente.id)
         else:
             form = ClienteForm(initial={'dni': dni})
             return render(request, 'clientes/agregar_cliente.html', {'form': form})

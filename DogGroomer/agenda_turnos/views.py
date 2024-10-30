@@ -31,7 +31,7 @@ class AgendarTurnoView(LoginRequiredMixin, FormView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs['cliente'] = self.cliente  
+        kwargs['cliente'] = self.cliente  # Pasar el cliente al formulario
         return kwargs
 
     def form_valid(self, form):
@@ -43,7 +43,9 @@ class AgendarTurnoView(LoginRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['cliente'] = self.cliente
-        context['mascotas'] = Mascota.objects.filter(cliente=self.cliente)  
+        context['mascotas'] = Mascota.objects.filter(cliente=self.cliente)
+        return context
+
 
 class TurnoConfirmadoView(LoginRequiredMixin, DetailView):  
     model = Turno

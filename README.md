@@ -40,22 +40,16 @@ python manage.py migrate
 Crea un superusuario:
 python manage.py createsuperuser
 
-Ejecuta el servidor de desarrollo:
 python manage.py runserver
 Accede a la aplicación:
 
-Abre tu navegador y ve a http://127.0.0.1:8000/admin para acceder al panel de administración.
-Ve a http://127.0.0.1:8000 para acceder a la aplicación.
+Abre tu navegador y Ve a http://127.0.0.1:8000 para acceder a la aplicación.
 
 # 🚀 Uso
-Acceso al Administrador de Django
-Inicia sesión en el administrador de Django usando las credenciales del superusuario que creaste.
-Desde el panel de administración, puedes gestionar clientes, mascotas, servicios y turnos.
-Utiliza las funcionalidades de búsqueda, filtrado y ordenamiento para encontrar y organizar la información fácilmente.
-Personalización y Desarrollo
-Para añadir nuevas características, puedes modificar los archivos del proyecto y crear nuevas migraciones usando python manage.py makemigrations y python manage.py migrate.
-Los archivos de configuración principal se encuentran en settings.py.
-Los modelos se encuentran en models.py, y las vistas y URLs están en views.py y urls.py respectivamente.
+ingresa al software con el super usuario creado desde python  
+registra un cliente por su numero de documento y luego una o varias mascotas para este cliente  
+una vez agendados toma un turno para la mascota de acuerdo al servicicio que quieras ofrecer   
+y luego peudes ir a la agenda y mirar el turno agendando en el dia y horario asignado. 
 
 # 🤝 Contribución
 Si deseas contribuir al proyecto, sigue estos pasos:

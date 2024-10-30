@@ -6,7 +6,8 @@ class DniForm(forms.Form):
     dni = forms.CharField(label='DNI del Cliente', max_length=10)
 
 class TurnoForm(forms.ModelForm):
-    def __init__(self, cliente=None, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        cliente = kwargs.pop('cliente', None)  # Extraer cliente de kwargs
         super().__init__(*args, **kwargs)
         if cliente:
             self.fields['mascota'].queryset = cliente.mascotas.all()
@@ -15,7 +16,7 @@ class TurnoForm(forms.ModelForm):
         model = Turno
         fields = ['mascota', 'servicio', 'fecha', 'hora']
         widgets = {
-            'fecha': forms.DateTimeInput(attrs={'type': 'date'}),
+            'fecha': forms.DateInput(attrs={'type': 'date'}),  # Usa 'DateInput' para fechas
             'hora': forms.TimeInput(attrs={'type': 'time'}),
         }
 
