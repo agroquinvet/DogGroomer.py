@@ -1,16 +1,33 @@
+<!-- profile.html -->
 {% extends 'base.html' %}
 
-{% block title %}Perfil{% endblock %}
-
 {% block content %}
-<body class="turnos-semana-body">
-    
+<div class="container mt-5">
+    <h2>Perfil de Usuario</h2>
     <form method="post">
-        <h2>Perfil</h2>
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Update Profile</button>
-        <a href="{% url 'home' %}" class="button">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Actualizar Datos</button>
     </form>
-</body>
+
+    <hr>
+
+    <h4>Cambiar Contraseña</h4>
+    <form method="post" action="{% url 'password_change' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="old_password" class="form-label">Contraseña Actual</label>
+            <input type="password" class="form-control" name="old_password" required>
+        </div>
+        <div class="mb-3">
+            <label for="new_password1" class="form-label">Nueva Contraseña</label>
+            <input type="password" class="form-control" name="new_password1" required>
+        </div>
+        <div class="mb-3">
+            <label for="new_password2" class="form-label">Confirmar Nueva Contraseña</label>
+            <input type="password" class="form-control" name="new_password2" required>
+        </div>
+        <button type="submit" class="btn btn-secondary">Cambiar Contraseña</button>
+    </form>
+</div>
 {% endblock %}

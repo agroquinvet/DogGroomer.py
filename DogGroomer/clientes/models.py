@@ -14,11 +14,33 @@ class Cliente(models.Model):
 
 class Mascota(models.Model):
     RAZAS = [
+        ('akita', 'Akita'),
+        ('beagle', 'Beagle'),
+        ('border_collie', 'Border Collie'),
+        ('boxer', 'Boxer'),
+        ('bulldog_ingles', 'Bulldog Inglés'),
         ('bulldog_frances', 'Bulldog Francés'),
-        ('golden', 'Golden Retriever'),
         ('caniche', 'Caniche'),
-       
+        ('cocker_spaniel', 'Cocker Spaniel'),
+        ('dachshund', 'Dachshund'),
+        ('dalmata', 'Dálmata'),
+        ('doberman', 'Dóberman'),
+        ('golden_retriever', 'Golden Retriever'),
+        ('gran_danes', 'Gran Danés'),
+        ('husky_siberiano', 'Husky Siberiano'),
+        ('labrador_retriever', 'Labrador Retriever'),
+        ('maltes', 'Maltés'),
+        ('pastor_aleman', 'Pastor Alemán'),
+        ('pastor_belga', 'Pastor Belga'),
+        ('pitbull', 'Pitbull'),
+        ('pug', 'Pug'),
+        ('rottweiler', 'Rottweiler'),
+        ('schnauzer', 'Schnauzer'),
+        ('shih_tzu', 'Shih Tzu'),
+        ('terrier_escoces', 'Terrier Escocés'),
+        ('yorkshire_terrier', 'Yorkshire Terrier'),
     ]
+
     
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='mascotas')
     nombre = models.CharField(max_length=100)

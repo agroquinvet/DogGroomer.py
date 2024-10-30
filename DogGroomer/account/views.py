@@ -3,6 +3,7 @@ from django.views.generic import TemplateView, FormView, RedirectView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CustomUserCreationForm, CustomUserChangeForm
+from django.contrib.auth.views import PasswordChangeView
 
 class RegisterView(FormView):
     template_name = 'account/register.html'
@@ -18,6 +19,10 @@ class RegisterSuccessView(TemplateView):
 
 class CustomLoginView(LoginView):
     template_name = 'account/login.html'
+
+class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
+    template_name = 'account/change_password.html'
+    success_url = '/home/' 
 
 class ProfileView(LoginRequiredMixin, FormView):
     template_name = 'account/profile.html'
