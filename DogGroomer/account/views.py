@@ -8,7 +8,7 @@ from django.contrib.auth.views import PasswordChangeView
 class RegisterView(FormView):
     template_name = 'account/register.html'
     form_class = CustomUserCreationForm
-    success_url = '/register_success/' 
+    success_url = '/account/register_success/'
 
     def form_valid(self, form):
         form.save()

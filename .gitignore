@@ -1,6 +1,7 @@
 # Carpeta del entorno virtual
 venv/
 env/
+site/
 
 # Archivos generados por el entorno virtual
 *.pyc
